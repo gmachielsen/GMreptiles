@@ -4,16 +4,18 @@ const fs = require("fs");
 const Product = require("../models/product");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
-exports.productById = (req, res, next) => {
-    Product.findById(id).exec((err, product) => {
-      if(err || !product) {
-        return res.status(400).json({
-          error: "Product not found"
+exports.productById = (req, res, next, id) => {
+    Product.findById(id)
+        .populate('category')
+        .exec((err, product) => {
+            if (err || !product) {
+                return res.status(400).json({
+                    error: 'Product not found'
+                });
+            }
+            req.product = product;
+            next();
         });
-      }
-      req.product = product;
-      next();
-    });
 };
 
 exports.read = (req, res) => {
