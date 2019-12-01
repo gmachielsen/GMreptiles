@@ -4,7 +4,6 @@
  * Get unique error field name
  */
 const uniqueMessage = error => {
-  console.log("Gijs, weet u zeker dat u hier komt???");
     let output;
     try {
         let fieldName = error.message.substring(
