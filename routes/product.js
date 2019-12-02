@@ -7,8 +7,8 @@ const { userById } = require("../controllers/user");
 
 router.get("/product/:productId", read);
 router.post("/product/create/:userId", requireSignin, isAuth, isAdmin, create);
-router.delete("/product/:productId/userId", requireSignin, isAuth, isAdmin, remove);
-router.put("/product/:productId/userId", requireSignin, isAuth, isAdmin, update);
+router.delete("/product/:productId/:userId", requireSignin, isAuth, isAdmin, remove);
+router.put("/product/:productId/:userId", requireSignin, isAuth, isAdmin, update);
 router.get("/products", list);
 router.get("/products/search", listSearch);
 
